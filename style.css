@@ -32,14 +32,20 @@ h1 {
       src: url("fonts/You Blockhead.ttf") format("truetype");
 }
 
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    position: relative;
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
+
 
 .navbar ul {
     display: flex;
@@ -83,32 +89,31 @@ header {
 
 .link-text span:first-child {
     position: relative;
-    color: #39251B;
+    color: #FFD166;
     z-index: 2;
+    text-shadow: 1px 1px 0 #39251B;
+    -webkit-text-stroke: 0.5px #24150F;
+    text-shadow: none;
 }
 
 .link-text span:last-child {
     position: absolute;
     top: 0;
     left: 0;
-    color: #B87920;
-     
+    color: #FFF5E8;
+    text-shadow: 1px 1px 0 #39251B;
+    -webkit-text-stroke: 0.5px #24150F;
+    text-shadow: none;
 }
 
 .navbar a:hover .link-text span:first-child {
     transform: translate(12px, -10px);
-     text-shadow:
-        2px 3px 1px #69412B,
-        5px 7px 5px rgba(57, 37, 27, 0.55),
-        9px 12px 13px rgba(57, 37, 27, 0.25);
+   
 }
 
 .navbar a:hover .link-text span:last-child {
     transform: translate(-12px, 10px);
-    text-shadow:
-    2px 3px 1px #69412B,
-    5px 7px 5px rgba(57, 37, 27, 0.55),
-    9px 12px 13px rgba(57, 37, 27, 0.25);
+    
 }
 
 .navbar {
@@ -147,4 +152,388 @@ header {
 .navbar a:hover .nav-icon {
     transform: translateY(-12px);
     filter: drop-shadow(0 6px 5px rgba(57, 37, 27, 0.65));
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    padding: 60px 6%;
+    padding-top: 140px;
+    
+}
+
+.hero-background {
+    position: absolute;
+     inset: 0;
+
+    background-image:
+    linear-gradient(
+        90deg,
+        rgba(18, 15, 30, 0.88) 0%,
+        rgba(24, 19, 36, 0.72) 30%,
+        rgba(30, 24, 42, 0.30) 55%,
+        rgba(30, 24, 42, 0) 75%
+    ),
+    url("images/Arena Real ao Pôr do Sol.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 240, 214, 0.28) 0%,
+        rgba(255, 240, 214, 0.10) 12%,
+        transparent 28%
+    );
+
+    pointer-events: none;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 550px;
+}
+
+.hero-content h2 {
+    font-size: clamp(36px, 4.8vw, 76px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #FFF5E8;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FFD27A;
+    margin-bottom: 18px;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #F4E7DA;
+    max-width: 480px;
+    margin-top: 20px;
+}
+
+.hero-messages {
+    margin-top: 28px;
+    min-height: 90px;
+    position: relative;
+        
+}
+
+
+.hero-messages p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FFD27A;
+    line-height: 1.2;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hero-messages p.ativa {
+    opacity: 1;
+}
+
+.hero-messages .palavra {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hero-messages .letra {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+.hero-messages p.ativa .letra {
+    animation: subirLetra 0.6s ease-out forwards;
+}
+
+@keyframes subirLetra {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-visual {
+    position: relative;
+    width: 100%;
+    min-width:0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A imagem comum determina a caixa de referência das três versões. */
+.hero-character {
+    position: relative;
+    width: min(75vh, 800px);
+    max-width: none;
+    flex: 0 0 auto;
+    
+}
+/* Ajuste do Cavaleiro somente em telas grandes */
+@media (min-width: 1200px) {
+    .hero-character {
+        left: -200px;
+    }
+}
+
+.cavaleiro-base {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Botão do menu para telas menores */
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid #FFD166;
+    border-radius: 8px;
+    background: rgba(36, 21, 15, 0.85);
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 4px 0;
+    border-radius: 3px;
+    background-color: #FFD166;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+
+}
+
+.menu-toggle.aberto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.aberto span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.aberto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu-container {
+    display: contents;
+}
+
+@media (max-width: 800px) {
+    .menu-container {
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .navbar {
+    display: block;
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 50%;
+
+    transform: translateX(-50%);
+    margin: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease;
+}
+
+.navbar.aberta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.navbar a:hover .link-text span:first-child {
+    transform: translateY(-10px);
+}
+
+.navbar a:hover .link-text span:last-child {
+    transform: translateY(10px);
+}
+
+.navbar .nav-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.navbar a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+}
+
+.navbar .link-text span {
+    line-height: 20px;
+}
+
+.navbar li {
+    opacity: 0;
+    transform: translateY(-25px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+}
+
+.navbar.aberta li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar.aberta li:nth-child(1) { transition-delay: 0.08s; }
+.navbar.aberta li:nth-child(2) { transition-delay: 0.16s; }
+.navbar.aberta li:nth-child(3) { transition-delay: 0.24s; }
+.navbar.aberta li:nth-child(4) { transition-delay: 0.32s; }
+.navbar.aberta li:nth-child(5) { transition-delay: 0.40s; }
+.navbar.aberta li:nth-child(6) { transition-delay: 0.48s; }
+
+}
+
+/* Transição entre as duas versões do Cavaleiro. */
+.hero-character {
+    isolation: isolate;
+}
+
+.cavaleiro-base {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.45s ease;
+    transform: translate(-30px, -25px);
+    
+}
+
+.cavaleiro-heroi {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+
+    transform: translate(-45px, -75px) scale(1.20);
+    
+ --mouse-x: 50%;
+    --mouse-y: 50%;
+
+    -webkit-mask-image: radial-gradient(
+        circle 90px at var(--mouse-x) var(--mouse-y),
+        black 98%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        circle 90px at var(--mouse-x) var(--mouse-y),
+        black 98%,
+        transparent 100%
+    );
+}
+
+
+/* Revelação do Herói com máscaras complementares */
+@media (hover: hover) and (pointer: fine) {
+
+    /* O Cavaleiro comum desaparece dentro do pincel */
+    .hero-character.mostrar-heroi .cavaleiro-base {
+        opacity: 1;
+
+        -webkit-mask-image: radial-gradient(
+            circle 90px at var(--mouse-x) var(--mouse-y),
+            transparent 98%,
+            black 100%
+        );
+
+        mask-image: radial-gradient(
+            circle 90px at var(--mouse-x) var(--mouse-y),
+            transparent 98%,
+            black 100%
+        );
+    }
+
+    /* O Herói aparece somente dentro do pincel */
+    .hero-character.mostrar-heroi .cavaleiro-heroi {
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .hero-character { width: min(75vh, 800px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cavaleiro-base, .cavaleiro-heroi { transition: none; }
+}
+
+
+.pincel-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
 }
