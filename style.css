@@ -37,19 +37,34 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+
+    height: 90px;
+    padding: 0 30px;
 
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
+
+    background: rgba(12, 22, 62, 0.88);
+
+    border-bottom: 1px solid
+        rgba(110, 153, 255, 0.55);
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.20);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 
 .navbar ul {
     display: flex;
-    gap: clamp(12px, 2.5vw, 45px);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 3vw, 55px);
     list-style: none;
 }
 .navbar a {
@@ -89,21 +104,19 @@ header {
 
 .link-text span:first-child {
     position: relative;
-    color: #FFD166;
+    color: #FFFFFF;
     z-index: 2;
-    text-shadow: 1px 1px 0 #39251B;
-    -webkit-text-stroke: 0.5px #24150F;
-    text-shadow: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    -webkit-text-stroke: 0;
 }
 
 .link-text span:last-child {
     position: absolute;
     top: 0;
     left: 0;
-    color: #FFF5E8;
-    text-shadow: 1px 1px 0 #39251B;
-    -webkit-text-stroke: 0.5px #24150F;
-    text-shadow: none;
+    color: #FFD166;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    -webkit-text-stroke: 0;
 }
 
 .navbar a:hover .link-text span:first-child {
@@ -120,6 +133,7 @@ header {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: max-content;
 }
 
 @media (max-width: 1100px) {
@@ -740,4 +754,493 @@ box-shadow:
     .botao-deck:hover {
         transform: translateY(-7px) scale(1.06);
     }
+}
+
+/* HOME - Evita rolagem horizontal indesejada*/
+
+/* ROYAL FORGE — OCULTAR BARRAS DE ROLAGEM */
+
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   ROYAL FORGE — NOVA NAVBAR
+========================================== */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr) 190px;
+    align-items: center;
+    column-gap: 16px;
+
+    padding: 0 36px;
+    z-index: 100;
+
+   background: linear-gradient(
+    90deg,
+    rgba(15, 35, 90, 0.55),
+    rgba(35, 55, 120, 0.35)
+);
+
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+
+    border-bottom: 1px solid rgba(130, 166, 255, 0.55);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo à esquerda */
+.site-header .header-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.site-header .header-logo img {
+    display: block;
+    width: 190px;
+    height: auto;
+}
+
+/* Navegação central */
+.site-header .navbar {
+    position: static;
+    transform: none;
+
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header .navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 32px);
+    list-style: none;
+}
+
+.site-header .navbar .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    position: relative;
+    padding: 12px 4px 16px;
+
+    color: #FFFFFF;
+    font-family: "Royal Forge", sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+}
+
+.site-header .navbar .nav-icon {
+    display: block;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    margin: 0;
+
+    transition: transform 0.35s ease;
+}
+
+.site-header .navbar .nav-link:hover {
+    color: #FFD166;
+}
+
+.site-header .navbar .nav-link:hover .nav-icon {
+    transform: translateY(-5px);
+}
+
+/* Indicador dourado da página ativa */
+/* Indicador da página ativa */
+.site-header .navbar .nav-link.ativo::after {
+    width: 65%;
+}
+/* ROYAL FORGE — AVATAR DA NAVBAR */
+
+.site-header .header-profile {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #FFD166;
+    border-radius: 50%;
+
+    background: rgba(12, 25, 65, 0.65);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.site-header .header-profile img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   ROYAL FORGE — AÇÕES DA NAVBAR
+========================================== */
+
+.site-header .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.site-header .header-action {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.site-header .header-action:hover {
+    color: #FFD166;
+}
+
+.site-header .notification-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    min-width: 17px;
+    height: 17px;
+    padding: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #F04455;
+    color: #FFFFFF;
+    font: bold 11px Arial, sans-serif;
+}
+
+
+/* ==========================================
+   ROYAL FORGE — NAVBAR RESPONSIVA
+========================================== */
+
+@media (max-width: 1200px) {
+
+    .site-header {
+        grid-template-columns: 150px minmax(0, 1fr) 160px;
+        padding: 0 20px;
+        column-gap: 12px;
+    }
+
+    .site-header .header-logo img {
+        width: 150px;
+    }
+
+    .site-header .navbar ul {
+        gap: 8px;
+    }
+
+    .site-header .navbar .nav-link {
+        font-size: 11px;
+        padding: 10px 2px 14px;
+    }
+
+    .site-header .navbar .nav-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .site-header .header-actions {
+        gap: 8px;
+    }
+
+    .site-header .header-action {
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+    }
+
+    .site-header .header-profile {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-header .header-profile img {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ROYAL FORGE — NAVBAR EM JANELAS MENORES */
+
+@media (max-width: 1000px) {
+    .site-header {
+        grid-template-columns: 1fr auto;
+    }
+
+    .site-header .navbar {
+        display: none;
+    }
+
+    .site-header .header-actions {
+        grid-column: 2;
+    }
+}
+
+
+/* ==========================================
+   ROYAL FORGE — MENU HAMBÚRGUER RESPONSIVO
+========================================== */
+
+/* Desktop: hambúrguer oculto */
+.site-header .menu-toggle {
+    display: none;
+}
+
+/* Tablet e celular */
+@media (max-width: 1100px) {
+
+    .site-header {
+        grid-template-columns: 1fr auto auto;
+        gap: 16px;
+    }
+
+    /* Esconde os links completos */
+    .site-header .navbar {
+        display: none;
+    }
+
+    /* Mostra o hambúrguer */
+    .site-header .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+
+        background: rgba(15, 35, 90, 0.35);
+        border: 1px solid rgba(255, 209, 102, 0.6);
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .site-header .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: #FFD166;
+        border-radius: 4px;
+    }
+}
+
+/* ROYAL FORGE — CORREÇÃO VISUAL DO HAMBÚRGUER */
+
+@media (max-width: 1100px) {
+    .site-header button.menu-toggle span {
+        display: block;
+        position: static;
+        flex: 0 0 3px;
+
+        width: 24px;
+        height: 3px;
+        min-height: 3px;
+
+        margin: 0;
+        padding: 0;
+
+        background: #FFD166;
+        border: none;
+        border-radius: 4px;
+
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+}
+
+/* ==========================================
+   ROYAL FORGE — MENU RESPONSIVO ABERTO
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .site-header .navbar.aberta {
+        display: flex;
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        height: auto;
+        min-width: 0;
+        margin: 0;
+        transform: none;
+
+        padding: 24px 20px;
+
+        background: rgba(27, 42, 65, 0.96);
+        border-bottom: 2px solid #FFD166;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        z-index: 101;
+    }
+
+    .site-header .navbar.aberta ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-header .navbar.aberta .nav-link {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+
+/* ROYAL FORGE — ANIMAÇÃO DO MENU MOBILE */
+
+@keyframes revelarMenuRoyal {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1100px) {
+    .site-header .navbar.aberta {
+        animation: revelarMenuRoyal 0.35s ease-out both;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header .navbar.aberta {
+        animation: none;
+    }
+}
+
+/* ROYAL FORGE — TESTE DE PALETAS DO MENU */
+
+@media (max-width: 1100px) {
+    .site-header .navbar.aberta {
+        --menu-fundo: #EAD7C3;
+--menu-texto: #1B2A41;
+
+        background: var(--menu-fundo);
+    }
+
+    .site-header .navbar.aberta .nav-link {
+        color: var(--menu-texto);
+    }
+}
+
+
+/* ROYAL FORGE — TIPOGRAFIA DO MENU MOBILE */
+
+/* ROYAL FORGE — TIPOGRAFIA RAJDHANI */
+
+.site-header .navbar .nav-link {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+}
+
+@media (max-width: 1100px) {
+    .site-header .navbar.aberta .nav-link {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: #1B2A41;
+    }
+}
+
+
+/* ROYAL FORGE — LINHA DOURADA ANIMADA */
+
+.site-header .navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    background: #B58A53;
+    border-radius: 2px;
+
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.site-header .navbar .nav-link:hover::after,
+.site-header .navbar .nav-link:focus-visible::after {
+    width: 65%;
 }

@@ -7,18 +7,83 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="any" href="/images/favicon.png?v=3">
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     
-<header>
-    <h1>
-       <img
-        src="images/logo-royal-forge.png"
-        alt="Royal Forge"
-        class="logo"
-    >
-    </h1>
-    <div class="menu-container">
+<header class="site-header">
+
+    <!-- Logo Royal Forge -->
+    <a href="#inicio" class="header-logo" aria-label="Royal Forge - Início">
+        <img src="images/logo-royal-forge.png" alt="Royal Forge">
+    </a>
+
+    <!-- Navegação principal -->
+    <nav class="navbar" id="menu-principal" aria-label="Navegação principal">
+        <ul>
+            <li>
+               <a href="#inicio" class="nav-link">
+                    <img src="images/icons/inicio.png" alt="" class="nav-icon">
+                    <span>Início</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#decks" class="nav-link">
+                    <img src="images/icons/decks.png" alt="" class="nav-icon">
+                    <span>Decks</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#cartas" class="nav-link">
+                    <img src="images/icons/cartas.png" alt="" class="nav-icon">
+                    <span>Cartas</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#meta" class="nav-link">
+                    <img src="images/icons/dicas.png" alt="" class="nav-icon">
+                    <span>Meta</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#ranking" class="nav-link">
+                    <img src="images/icons/ranking.png" alt="" class="nav-icon">
+                    <span>Ranking</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#torneios" class="nav-link">
+                    <img src="images/icons/perfil.png" alt="" class="nav-icon">
+                    <span>Torneios</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Ações do usuário: somente visual por enquanto -->
+    <div class="header-actions">
+        <button class="header-action search-action" type="button" aria-label="Buscar">
+            <span aria-hidden="true">⌕</span>
+        </button>
+
+        <button class="header-action notification-action" type="button" aria-label="Notificações">
+            <span aria-hidden="true">♟</span>
+            <span class="notification-count">1</span>
+        </button>
+
+        <button class="header-profile" type="button" aria-label="Meu perfil">
+            <img src="images/icons/perfil.png" alt="">
+        </button>
+    </div>
+
+    <!-- Menu responsivo -->
     <button
         class="menu-toggle"
         type="button"
@@ -30,90 +95,8 @@
         <span></span>
     </button>
 
-    <nav class="navbar" id="menu-principal">
-        <ul>
-    <li>
-        <a href="#inicio">
-            <img src="images/icons/inicio.png"
-     alt=""
-     class="nav-icon">
-         <span class="link-text">
-           <span>Início</span>
-            <span aria-hidden="true">Início</span>
-         </span> 
-        </a>
-
-    </li>
-            <li>
-            <a href="#cartas">
-                 <img
-            src="images/icons/cartas.png"
-            alt=""
-            class="nav-icon"
-        >
-                <span class="link-text">
-                   <span>Cartas</span>
-                    <span aria-hidden="true">Cartas</span>
-                </span>
-            </a>
-        </li>
-
-            <li>
-             <a href="#dicas">
-                 <img
-            src="images/icons/dicas.png"
-            alt=""
-            class="nav-icon"
-        >
-                <span class="link-text">
-                   <span>Dicas</span>
-                    <span aria-hidden="true">Dicas</span>
-                </span>
-            </a>
-        </li>
-           <li>
-    <a href="#decks">
-
-        <img
-            src="images/icons/decks.png"
-            alt=""
-            class="nav-icon"
-        >
-
-        <span class="link-text">
-            <span>Decks</span>
-            <span aria-hidden="true">Decks</span>
-        </span>
-
-    </a>
-</li>
-            <li><a href="#ranking">
-                <img
-            src="images/icons/ranking.png"
-            alt=""
-            class="nav-icon"
-        >
-                <span class="link-text">
-            <span>Ranking</span>
-            <span aria-hidden="true">Ranking</span>
-        </span>
-    </a>
-</li>
-            <li>
-                <a href="#perfil">
-                    <img
-                        src="images/icons/perfil.png"
-                        alt=""
-                        class="nav-icon">
-                    <span class="link-text">
-                    <span>Perfil</span>
-                    <span aria-hidden="true">Perfil</span>
-                </span></a>
-            </li>
-        </ul>
-    </nav>
-    </div>
 </header>
+
 
 <main>
    <section class="hero" id="inicio">

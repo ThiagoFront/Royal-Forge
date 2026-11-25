@@ -403,3 +403,4 @@ if (canvasAgua && esferaAgua) {
 
     window.addEventListener("resize", ajustarAgua);
 }
+
